@@ -59,7 +59,7 @@ class Program
 
     private static void MakeWindowsIcon(string outPath, Image? background, Color backgroundColor, Image? foreground)
     {
-        MakePng(Path.Combine(outPath, "StarCubes.Desktop\\icon.ico"), 64, 64, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Desktop\\icon.ico"), 64, 64, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
@@ -68,37 +68,37 @@ class Program
 
     private static void MakeUWPIcons(string outPath, Image? background, Color backgroundColor, Image? foreground)
     {
-        MakePng(Path.Combine(outPath, "StarCubes.UWP\\Assets\\LockScreenLogo.scale-200.png"), 48, 48, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.UWP\\Assets\\LockScreenLogo.scale-200.png"), 48, 48, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.UWP\\Assets\\SplashScreen.scale-200.png"), 1240, 600, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.UWP\\Assets\\SplashScreen.scale-200.png"), 1240, 600, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.UWP\\Assets\\Square150x150Logo.scale-200.png"), 300, 300, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.UWP\\Assets\\Square150x150Logo.scale-200.png"), 300, 300, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.UWP\\Assets\\Square44x44Logo.scale-200.png"), 88, 88, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.UWP\\Assets\\Square44x44Logo.scale-200.png"), 88, 88, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.UWP\\Assets\\Square44x44Logo.targetsize-24_altform-unplated.png"), 24, 24, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.UWP\\Assets\\Square44x44Logo.targetsize-24_altform-unplated.png"), 24, 24, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.UWP\\Assets\\StoreLogo.png"), 50, 50, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.UWP\\Assets\\StoreLogo.png"), 50, 50, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.UWP\\Assets\\Wide310x150Logo.scale-200.png"), 620, 300, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.UWP\\Assets\\Wide310x150Logo.scale-200.png"), 620, 300, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
@@ -108,16 +108,16 @@ class Program
     {
         // hdpi
 
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-hdpi\\ic_launcher.png"), 72, 72, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-hdpi\\ic_launcher.png"), 72, 72, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-hdpi\\ic_launcher_foreground.png"), 162, 162, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-hdpi\\ic_launcher_foreground.png"), 162, 162, (Bitmap bmp) =>
         {
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-hdpi\\ic_launcher_round.png"), 72, 72, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-hdpi\\ic_launcher_round.png"), 72, 72, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground, foregroundRoundScale);
@@ -125,16 +125,16 @@ class Program
 
         // mdpi
 
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-mdpi\\ic_launcher.png"), 48, 48, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-mdpi\\ic_launcher.png"), 48, 48, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-mdpi\\ic_launcher_foreground.png"), 108, 108, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-mdpi\\ic_launcher_foreground.png"), 108, 108, (Bitmap bmp) =>
         {
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-mdpi\\ic_launcher_round.png"), 48, 48, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-mdpi\\ic_launcher_round.png"), 48, 48, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground, foregroundRoundScale);
@@ -142,16 +142,16 @@ class Program
 
         // xhdpi
 
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xhdpi\\ic_launcher.png"), 96, 96, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xhdpi\\ic_launcher.png"), 96, 96, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xhdpi\\ic_launcher_foreground.png"), 216, 216, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xhdpi\\ic_launcher_foreground.png"), 216, 216, (Bitmap bmp) =>
         {
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xhdpi\\ic_launcher_round.png"), 96, 96, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xhdpi\\ic_launcher_round.png"), 96, 96, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground, foregroundRoundScale);
@@ -159,16 +159,16 @@ class Program
 
         // xxhdpi
 
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xxhdpi\\ic_launcher.png"), 144, 144, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xxhdpi\\ic_launcher.png"), 144, 144, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xxhdpi\\ic_launcher_foreground.png"), 324, 324, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xxhdpi\\ic_launcher_foreground.png"), 324, 324, (Bitmap bmp) =>
         {
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xxhdpi\\ic_launcher_round.png"), 144, 144, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xxhdpi\\ic_launcher_round.png"), 144, 144, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground, foregroundRoundScale);
@@ -176,16 +176,16 @@ class Program
 
         // xxxhdpi
 
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xxxhdpi\\ic_launcher.png"), 192, 192, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xxxhdpi\\ic_launcher.png"), 192, 192, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xxxhdpi\\ic_launcher_foreground.png"), 432, 432, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xxxhdpi\\ic_launcher_foreground.png"), 432, 432, (Bitmap bmp) =>
         {
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.Android\\Resources\\mipmap-xxxhdpi\\ic_launcher_round.png"), 192, 192, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.Android\\Resources\\mipmap-xxxhdpi\\ic_launcher_round.png"), 192, 192, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground, foregroundRoundScale);
@@ -194,67 +194,67 @@ class Program
     private static void MakeIOSIcons(string outPath, Image? background, Color backgroundColor, Image? foreground)
     {
 
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon1024.png"), 1024, 1024, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon1024.png"), 1024, 1024, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon120.png"), 120, 120, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon120.png"), 120, 120, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon152.png"), 152, 152, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon152.png"), 152, 152, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon167.png"), 167, 167, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon167.png"), 167, 167, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon180.png"), 180, 180, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon180.png"), 180, 180, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon20.png"), 20, 20, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon20.png"), 20, 20, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon29.png"), 29, 29, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon29.png"), 29, 29, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon40.png"), 40, 40, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon40.png"), 40, 40, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon58.png"), 58, 58, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon58.png"), 58, 58, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon60.png"), 60, 60, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon60.png"), 60, 60, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon76.png"), 76, 76, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon76.png"), 76, 76, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon80.png"), 80, 80, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon80.png"), 80, 80, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);
         });
-        MakePng(Path.Combine(outPath, "StarCubes.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon87.png"), 87, 87, (Bitmap bmp) =>
+        MakePng(Path.Combine(outPath, "VoxelEngine.IOS\\Assets.xcassets\\AppIcon.appiconset\\Icon87.png"), 87, 87, (Bitmap bmp) =>
         {
             RenderBackground(bmp, background, backgroundColor);
             RenderForeground(bmp, foreground);

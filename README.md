@@ -1,3 +1,4 @@
-# SC minimal
+# Voxel Engine (beta)
 
-rbfx light 3d template for apps
+Заготовка воксельного проекта на движке RBFX
+Можно использовать как пример работы с CustomGeometry
