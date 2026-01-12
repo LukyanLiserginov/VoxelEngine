@@ -118,29 +118,29 @@ jobs:
       run: dotnet tool restore
 
     - name: Restore dependencies
-      working-directory: ./StarCubes.Desktop
+      working-directory: ./VoxelEngine.Desktop
       run: dotnet restore
 
     - name: Dotnet Publish
-      working-directory: ./StarCubes.Desktop
+      working-directory: ./VoxelEngine.Desktop
       run: dotnet publish -f net8.0 -c Release --runtime ${{ env.RUNTIME_ID }} --self-contained true -p:Version=${{ needs.set_version.outputs.BUILD_VERSION }}
 
     - name: Copy runtime dlls
       if: ${{ env.RUNTIME_ID == 'win-x64' }}
       run: |
-        copy "C:/Windows/System32/MSVCP140.dll" "StarCubes.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/"
-        copy "C:/Windows/System32/VCRUNTIME140.dll" "StarCubes.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/"
-        copy "C:/Windows/System32/VCRUNTIME140_1.dll" "StarCubes.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/"
-        copy "C:/Windows/System32/D3DCOMPILER_47.dll" "StarCubes.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/"
+        copy "C:/Windows/System32/MSVCP140.dll" "VoxelEngine.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/"
+        copy "C:/Windows/System32/VCRUNTIME140.dll" "VoxelEngine.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/"
+        copy "C:/Windows/System32/VCRUNTIME140_1.dll" "VoxelEngine.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/"
+        copy "C:/Windows/System32/D3DCOMPILER_47.dll" "VoxelEngine.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/"
 
     - name: Zip Package
-      run: dotnet tool run ezpipeline -- zip -i StarCubes.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/ -o StarCubes.${{ env.RUNTIME_ID }}.zip
+      run: dotnet tool run ezpipeline -- zip -i VoxelEngine.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/ -o VoxelEngine.${{ env.RUNTIME_ID }}.zip
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ./StarCubes.${{ env.RUNTIME_ID }}.zip
+          ./VoxelEngine.${{ env.RUNTIME_ID }}.zip
         name: v${{ needs.set_version.outputs.BUILD_VERSION }}
         tag_name: v${{ needs.set_version.outputs.BUILD_VERSION }}
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -152,7 +152,7 @@ jobs:
       if: ${{ env.BUTLER_API_KEY != '' && vars.ITCH_PROJECT != '' }}
       run: |
         dotnet tool run ezpipeline -- fetch-tool --name Butler -o tools/itch
-        tools/itch/butler push StarCubes.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/ ${{ vars.ITCH_PROJECT }}:${{ env.RUNTIME_ID }}
+        tools/itch/butler push VoxelEngine.Desktop/bin/Release/net8.0/${{ env.RUNTIME_ID }}/publish/ ${{ vars.ITCH_PROJECT }}:${{ env.RUNTIME_ID }}
       shell: bash
 
   # ---------------------------------------------------------------------------------------
@@ -178,7 +178,7 @@ jobs:
       run: dotnet workload install android 
 
     - name: Restore dependencies
-      working-directory: ./StarCubes.Android
+      working-directory: ./VoxelEngine.Android
       run: dotnet restore
 
     - name: Install android-sdk
@@ -204,17 +204,17 @@ jobs:
       if: ${{ needs.set_version.outputs.HAS_PLAY_KEYSTORE == 'true' }}
       uses: timheuer/base64-to-file@v1
       with:
-        fileDir: '${{ github.workspace }}/StarCubes.Android'
+        fileDir: '${{ github.workspace }}/VoxelEngine.Android'
         fileName: 'googleplay.jks'
         encodedString: ${{ secrets.PLAY_KEYSTORE }}
 
-    - name: Extract ApplicationId from StarCubes.Android.csproj
-      working-directory: ./StarCubes.Android
+    - name: Extract ApplicationId from VoxelEngine.Android.csproj
+      working-directory: ./VoxelEngine.Android
       run: |
-        dotnet tool run ezpipeline get-msbuild-property -i StarCubes.Android.csproj -p ApplicationId -v ANDROID_PACKAGENAME
+        dotnet tool run ezpipeline get-msbuild-property -i VoxelEngine.Android.csproj -p ApplicationId -v ANDROID_PACKAGENAME
     
     - name: Dotnet Publish
-      working-directory: ./StarCubes.Android
+      working-directory: ./VoxelEngine.Android
       run: |
         if [ -n "${{ secrets.PLAY_KEYSTORE }}" ]; then
           echo "Secret PLAY_KEYSTORE is defined. Building and signing the aab file."
@@ -226,8 +226,8 @@ jobs:
 
     - name: Find APK
       run: |
-        dotnet tool run ezpipeline resolve-path -i ./StarCubes.Android/bin/Release/**/*-Signed.apk -v APK_PATH
-        dotnet tool run ezpipeline resolve-path -i ./StarCubes.Android/bin/Release/**/*-Signed.aab -v AAB_PATH
+        dotnet tool run ezpipeline resolve-path -i ./VoxelEngine.Android/bin/Release/**/*-Signed.apk -v APK_PATH
+        dotnet tool run ezpipeline resolve-path -i ./VoxelEngine.Android/bin/Release/**/*-Signed.aab -v AAB_PATH
 
     - name: Release
       uses: softprops/action-gh-release@v1
@@ -281,26 +281,26 @@ jobs:
       run: dotnet tool restore
 
     - name: Restore application
-      working-directory: ./StarCubes.UWP
-      run: msbuild StarCubes.UWP.csproj /t:Restore /p:Configuration=Release
+      working-directory: ./VoxelEngine.UWP
+      run: msbuild VoxelEngine.UWP.csproj /t:Restore /p:Configuration=Release
    
     - name: Patch manifest version
-      working-directory: ./StarCubes.UWP
+      working-directory: ./VoxelEngine.UWP
       run: dotnet tool run ezpipeline -- set-xml -i Package.appxmanifest -p default:Package/default:Identity -a Version -v ${{ needs.set_version.outputs.BUILD_VERSION }}.0
 
     - name: Dotnet Publish
-      working-directory: ./StarCubes.UWP
-      run: msbuild StarCubes.UWP.csproj /p:AppxPackageDir=appxupload /p:AppxBundle=Always /p:AppxBundlePlatforms="x64" /p:Platform=x64 /p:AppxPackageSigningEnabled=false /p:UapAppxPackageBuildMode=StoreUpload /p:Configuration=Release /p:Version=${{ needs.set_version.outputs.BUILD_VERSION }}
+      working-directory: ./VoxelEngine.UWP
+      run: msbuild VoxelEngine.UWP.csproj /p:AppxPackageDir=appxupload /p:AppxBundle=Always /p:AppxBundlePlatforms="x64" /p:Platform=x64 /p:AppxPackageSigningEnabled=false /p:UapAppxPackageBuildMode=StoreUpload /p:Configuration=Release /p:Version=${{ needs.set_version.outputs.BUILD_VERSION }}
 
     - name: Zip Package
-      run: dotnet tool run ezpipeline -- zip -i StarCubes.UWP/appxupload/StarCubes.UWP_${{ needs.set_version.outputs.BUILD_VERSION }}.0_Test -o StarCubes.UWP/appxupload/StarCubes.UWP.x64.zip
+      run: dotnet tool run ezpipeline -- zip -i VoxelEngine.UWP/appxupload/VoxelEngine.UWP_${{ needs.set_version.outputs.BUILD_VERSION }}.0_Test -o VoxelEngine.UWP/appxupload/VoxelEngine.UWP.x64.zip
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-           StarCubes.UWP/appxupload/StarCubes.UWP_${{ needs.set_version.outputs.BUILD_VERSION }}.0_x64_bundle.appxupload
-           StarCubes.UWP/appxupload/StarCubes.UWP.x64.zip
+           VoxelEngine.UWP/appxupload/VoxelEngine.UWP_${{ needs.set_version.outputs.BUILD_VERSION }}.0_x64_bundle.appxupload
+           VoxelEngine.UWP/appxupload/VoxelEngine.UWP.x64.zip
         name: v${{ needs.set_version.outputs.BUILD_VERSION }}
         tag_name: v${{ needs.set_version.outputs.BUILD_VERSION }}
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -316,7 +316,7 @@ jobs:
       with:
         repository: ${{ github.repository }}
         tag: v${{ needs.set_version.outputs.BUILD_VERSION }}
-        fileName: 'StarCubes.win-x64.zip'
+        fileName: 'VoxelEngine.win-x64.zip'
         token: ${{ secrets.GITHUB_TOKEN }}
         out-file-path: ./StandaloneWindows64
         extract: true
@@ -326,7 +326,7 @@ jobs:
       with:
         repository: ${{ github.repository }}
         tag: v${{ needs.set_version.outputs.BUILD_VERSION }}
-        fileName: 'StarCubes.linux-x64.zip'
+        fileName: 'VoxelEngine.linux-x64.zip'
         token: ${{ secrets.GITHUB_TOKEN }}
         out-file-path: ./StandaloneLinux64
         extract: true
@@ -336,15 +336,15 @@ jobs:
       with:
         repository: ${{ github.repository }}
         tag: v${{ needs.set_version.outputs.BUILD_VERSION }}
-        fileName: 'StarCubes.osx-x64.zip'
+        fileName: 'VoxelEngine.osx-x64.zip'
         token: ${{ secrets.GITHUB_TOKEN }}
         out-file-path: ./StandaloneMac64
         extract: true
 
-    - name: Delete StarCubes.*-x64.zip
+    - name: Delete VoxelEngine.*-x64.zip
       run: |
         ROOT_FOLDER="./"
-        PATTERN="*StarCubes.*-x64.zip"
+        PATTERN="*VoxelEngine.*-x64.zip"
         find "$ROOT_FOLDER" -type f -name "$PATTERN" -exec rm -f {} +
 
     - uses: game-ci/steam-deploy@v3
