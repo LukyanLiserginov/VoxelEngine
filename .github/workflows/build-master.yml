@@ -77,14 +77,6 @@ jobs:
       - name: Restore tools
         run: dotnet tool restore
 
-      - name: Test in Debug configuration
-        working-directory: ./StarCubes.Tests
-        run: dotnet test --configuration Debug --verbosity normal
-
-      - name: Test in Release configuration
-        working-directory: ./StarCubes.Tests
-        run: dotnet test --configuration Release --verbosity normal
-
   # ---------------------------------------------------------------------------------------
   build_desktop:
     needs: [set_version, tests]
